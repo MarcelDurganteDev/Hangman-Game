@@ -1,0 +1,172 @@
+/*  CLASS TOGGLE HIDDEN */
+
+.figure-part {
+  display: none;
+}
+
+
+/* USER PAGE (first page) */
+
+section {
+  height: 100vh;
+  width: 100%;
+  place-items: center;
+}
+
+.first-page,
+.game-page,
+.won-page,
+.lost-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* USER CONTAINER */
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 60rem;
+  width: 90rem;
+  margin: 10rem;
+}
+
+.user-container p {
+  font-weight: bold;
+  font-size: 5rem;
+}
+
+.user-container span {
+  font-size: 2rem;
+  margin: 1rem;
+  margin-right: 13rem;
+}
+
+.user-container input {
+  height: 3rem;
+  width: 20rem;
+}
+.user-container button {
+  margin-top: 2rem;
+  height: 3.5rem;
+  width: 20rem;
+  background-color: black;
+  color: white;
+}
+
+/* USER SCORES CONTAINER */
+
+.user-scores {
+  display: flex;
+  flex-direction: column;
+  height: 60rem;
+  width: 30rem;
+  border: 1px solid black;
+  font-size: 2.5rem;
+}
+
+.user-scores p {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.user-scores span {
+  display: flex;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.scores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 13rem;
+}
+
+.margin-3 {
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+/* MAIN CONTAINER */
+
+.main-container {
+  display: grid;
+  grid-template-areas:
+    "img guess guess guess"
+    "clicked letters letters letters";
+  border: 1px solid black;
+  height: 60rem;
+  width: 90rem;
+  margin: 10rem;
+}
+
+/* IMAGE CONTAINER */
+
+.image-container {
+  grid-area: img;
+}
+
+/* HANGMAN SVG IMAGE */
+
+svg {
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+line {
+  stroke: black;
+  stroke-width: 4;
+}
+
+/* GUESS CONTAINER */
+
+.guess-container {
+  grid-area: guess;
+  display: flex;
+  flex-direction: column;
+}
+
+.guess-container p {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* UNDERLINED LETTERS CONTAINER */
+
+.underline {
+  text-align: center;
+  margin-top: 45%;
+}
+
+/* CLICKED LETTERS CONTAINER */
+
+.clicked-letters {
+  grid-area: clicked;
+}
+
+/*   LETTERS CONTAINER & KEYBOARD  */
+
+.letters-container {
+  grid-area: letters;
+}
+
+.lettersBtn {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.lettersBtn button {
+  color: black;
+  height: 5rem;
+  width: 5rem;
+}
