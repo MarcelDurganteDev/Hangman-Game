@@ -1,2 +1,2 @@
-# hangman
+# Hangman Game
 Play with Assembler
