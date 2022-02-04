@@ -13,17 +13,17 @@
 
 <body>
     <!-- FIRST PAGE-->
-    <section class="first-page">
+    <section id="firstPage">
         <!-- USER CONTAINER -->
         <div class="user-container">
             <p>Choose your name</p>
-            <span class="username">Player tag</span>
+            <span id="userName">Player tag</span>
             <input type="text" id="userName" class="userName">
             <!-- Corrigir indentação -->
             <div>
                 <a href="#game-page">
             </div>
-            <button id="startGame" class="start" onclick="startGame()">Start Game</button>
+            <button id="startGame" class="start" onclick="startGame();">Start Game</button>
             </a>
         </div>
         <!-- USER SCORES CONTAINER -->
@@ -31,48 +31,48 @@
             <p>User Scores</p>
             <!-- current user -->
             <div class="current-user margin-3">
-                <span class="currUsername bold">Marcel</span>
+                <span div="currUsername" class="bold">Marcel</span>
                 <div class="currUser ">
-                    <span class="currStatus">current playing</span>
+                    <span id="currStatus">current playing</span>
                 </div>
             </div>
             <!-- first user -->
-            <div class="firstUser margin-3">
+            <div id="firstUser" class="margin-3">
                 <span class="bold">Danijel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="scores"><span>100</span><span>seconds</span></div>
             </div>
             <!-- second user -->
-            <div class="secondUser margin-3">
+            <div id="secondUser" class="margin-3">
                 <span class="bold">Caroline</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- third user -->
-            <div class="third-user margin-3">
-                <span class="thirdUser bold">Marcel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+            <!-- third user" class="-->
+            <div id="thirdUser" class="margin-3">
+                <span id="thirdUser" class="bold">Marcel</span>
+                <div id="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- forth user -->
-            <div class="forth-user margin-3">
+            <!-- forth user" class="-->
+            <div id="forthUser" class="margin-3">
                 <span class="bold">Mikaela</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="scores"><span>100</span><span>seconds</span></div>
             </div>
         </div>
     </section>
 
     <!-- GAME PAGE -->
-    <a name="game-page"></a>
-    <section class="game-page">
+    <a name="game_page"></a>
+    <section id="gamePage">
         <!-- MAIN CONTAINER -->
         <div class="main-container">
             <!-- SVG IMAGE -->
             <div class="image-container">
-                <svg height="300" width="300" id="hangman" class="hide">
+                <svg height="300" width="300" id="hangman" class="">
                     <line x1="10" y1="250" x2="200" y2="250" />
                     <line x1="105" y1="250" x2="105" y2="20" />
                     <line x1="103" y1="20" x2="202" y2="20" />
                     <line x1="200" y1="20" x2="200" y2="60" />
                     <!-- head-->
-                    <g id="head" class="figure-part">
+                    <g id="head" class="figure-part ">
                         <circle cx="200" cy="80" r="20" stroke="black" stroke-width="4" fill="white" />
                         <circle cx="193" cy="80" r="4" />
                         <circle cx="207" cy="80" r="4" />
@@ -97,7 +97,7 @@
                     <p>Guess the fruit</p>
                 </div>
                 <!-- UNDERLINED LETTERS CONTAINER-->
-                <div id="underLine" class="underline">
+                <div id="underline" class="underline">
                     <span>_ _ _ _ </span>
                 </div>
             </div>
@@ -108,7 +108,30 @@
             <!-- KEYBOARD LETTERS CONTAINER-->
             <div class="letters-container">
                 <div class="keyboard">
-                    <span class="lettersBtn" id="injectLetters"></span>
+                    <button onclick="selectChar('a'); this.disabled=true;">a</button>
+                    <button onclick="selectChar('b'); this.disabled=true;">b</button>
+                    <button onclick="selectChar('c'); this.disabled=true;">c</button>
+                    <button onclick="selectChar('d'); this.disabled=true;">d</button>
+                    <button onclick="selectChar('e'); this.disabled=true;">e</button>
+                    <button onclick="selectChar('f'); this.disabled=true;">f</button>
+                    <button onclick="selectChar('g'); this.disabled=true;">g</button>
+                    <button onclick="selectChar('h'); this.disabled=true;">h</button>
+                    <button onclick="selectChar('i'); this.disabled=true;">i</button>
+                    <button onclick="selectChar('j'); this.disabled=true;">j</button>
+                    <button onclick="selectChar('k'); this.disabled=true;">k</button>
+                    <button onclick="selectChar('l'); this.disabled=true;">l</button>
+                    <button onclick="selectChar('m'); this.disabled=true;">m</button>
+                    <button onclick="selectChar('n'); this.disabled=true;">n</button>
+                    <button onclick="selectChar('o'); this.disabled=true;">o</button>
+                    <button onclick="selectChar('p'); this.disabled=true;">p</button>
+                    <button onclick="selectChar('q'); this.disabled=true;">q</button>
+                    <button onclick="selectChar('r'); this.disabled=true;">r</button>
+                    <button onclick="selectChar('s'); this.disabled=true;">s</button>
+                    <button onclick="selectChar('t'); this.disabled=true;">t</button>
+                    <button onclick="selectChar('u'); this.disabled=true;">u</button>
+                    <button onclick="selectChar('v'); this.disabled=true;">v</button>
+                    <button onclick="selectChar('x'); this.disabled=true;">x</button>
+                    <button onclick="selectChar('z'); this.disabled=true;">z</button>
                 </div>
             </div>
         </div>
@@ -118,37 +141,37 @@
             <p>User Scores</p>
             <!-- current user -->
             <div class="current-user margin-3">
-                <span class="currUsername bold">Marcel</span>
-                <div class="currUser ">
-                    <span class="currStatus">current playing</span>
+                <span id="currUsername" class="bold">Marcel</span>
+                <div class="curr-user ">
+                    <span id="currStatus">current playing</span>
                 </div>
             </div>
             <!-- first user -->
-            <div class="firstUser margin-3">
+            <div id="firstUser" class="margin-3">
                 <span class="bold">Danijel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="score1"><span>100</span><span>seconds</span></div>
             </div>
             <!-- second user -->
-            <div class="secondUser margin-3">
+            <div id="secondUser" class="margin-3">
                 <span class="bold">Caroline</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="score2"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- third user -->
-            <div class="third-user margin-3">
+            <!--third user" class="-->
+            <div id="third-user" class="margin-3">
                 <span class="thirdUser bold">Marcel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="score3"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- forth user -->
-            <div class="forth-user margin-3">
+            <!-- forth user" class="-->
+            <div id="forth-user" class="margin-3">
                 <span class="bold">Mikaela</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+                <div id="score4"><span>100</span><span>seconds</span></div>
             </div>
         </div>
         </div>
     </section>
 
     <!-- WON PAGE -->
-    <section class="won-page">
+    <section id="wonPage">
         <div class="won-container">
             <p>You Won!</p>
             <p>You won in <span>50</span><span>seconds</span>.</p>
@@ -161,26 +184,26 @@
             <div class="current-user margin-3">
                 <span class="currUsername bold">Marcel</span>
                 <div class="currUser ">
-                    <span class="currStatus">current playing</span>
+                    <span id="currStatus">current playing</span>
                 </div>
             </div>
             <!-- first user -->
-            <div class="firstUser margin-3">
+            <div id="firstUser" class="margin-3">
                 <span class="bold">Danijel</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
             <!-- second user -->
-            <div class="secondUser margin-3">
+            <div id="secondUser" class="margin-3">
                 <span class="bold">Caroline</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- third user -->
-            <div class="third-user margin-3">
+            <!-- third user" class="-->
+            <div id="third-user" class="margin-3">
                 <span class="thirdUser bold">Marcel</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- forth user -->
-            <div class="forth-user margin-3">
+            <!-- forth user" class="-->
+            <div id="forth-user" class="margin-3">
                 <span class="bold">Mikaela</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
@@ -188,7 +211,7 @@
     </section>
 
     <!-- LOST PAGE -->
-    <section class="lost-page">
+    <section id="lostPage">
         <div>
             <a href="#lost-page">
         </div>
@@ -204,33 +227,33 @@
             <div class="current-user margin-3">
                 <span class="currUsername bold">Marcel</span>
                 <div class="currUser ">
-                    <span class="currStatus">current playing</span>
+                    <span id="currStatus">current playing</span>
                 </div>
             </div>
             <!-- first user -->
-            <div class="firstUser margin-3">
+            <div id="firstUser" class="margin-3">
                 <span class="bold">Danijel</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
             <!-- second user -->
-            <div class="secondUser margin-3">
+            <div id="secondUser" class="margin-3">
                 <span class="bold">Caroline</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- third user -->
-            <div class="third-user margin-3">
+            <!-- third user" class="-->
+            <div id="third-user" class="margin-3">
                 <span class="thirdUser bold">Marcel</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- forth user -->
-            <div class="forth-user margin-3">
+            <!-- forth user" class="-->
+            <div id="forth-user" class="margin-3">
                 <span class="bold">Mikaela</span>
                 <div class="scores"><span>100</span><span>seconds</span></div>
             </div>
         </div>
 
     </section>
-    <script src="./assets/javascript/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
