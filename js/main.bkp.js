@@ -133,7 +133,6 @@ function selectChar(chr) {
         if (countErrors === 5) {
             // function gameover() ...
             endTime = Date.now();
-            console.log(endTime);
 
             setTimeout(function () {
                 showPage('lostPage');
@@ -223,3 +222,193 @@ function getPoints() {
 
 
 // Aumentar o nivel de dificuldade do jogo a cada rodada
+
+
+
+
+
+
+
+
+const LOCAL_STORAGE_SCORES_KEY = 'scores.lists';
+let list = JSON.parse(localStorage.getItem(LOCAL_STORAGE_SCORES_KEY)) || [];
+const listsContainer = document.querySelector('[data-lists]');
+
+let lists = [
+    {
+        id: 1,
+        name: 'name'
+    },
+    {
+        id: 2,
+        name: 'todo'
+    }
+];
+
+function render() {
+    clearElement(listsContainer);
+    lists.forEach(list => {
+        const listElement = document.createElement('li');
+        listElement.dataset.listId = list.id;
+        listElement.classList.add('list-name');
+        listElement.innerText = list.name;
+    });
+}
+
+function clearElement(element) {
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+}
+
+render();
+
+function saveAndRender() {
+    save();
+    render();
+}
+
+function saveToLocalStorag() {
+    localStorage.setItem(LOCAL_STORAGE_SCORES_KEY, JSON.stringify(lists));
+}
+
+// Mostrar pontuaçao do jogador tempo de jogo + numero de letras
+// letra vale 1
+// contador de tempo
+// tempo final menos inical
+// cada 10s -1 ponto
+
+// Nas pags lost e won ter o btn jogar novamente
+
+// Aumentar o nivel de dificuldade do jogo a cada rodada
+
+
+
+
+
+
+
+
+
+var inputPlayerName = document.getElementById('userName');
+const btnStartGame = document.getElementById('btnStartGame');
+var playersScores = [];
+var randomFruit = '';
+showPage('firstPage');
+var countErrors = 0;
+var textUnderlines = '';
+let startTime;
+let endTime;
+let scoreTime;
+let finalScore;
+let points;
+let playerName = inputPlayerName;
+// const LOCAL_STORAGE_SCORES_KEY = 'scores.lists';
+// let list = JSON.parse(localStorage.getItem(LOCAL_STORAGE_SCORES_KEY)) || [];
+
+btnStartGame.addEventListener('submit', e => {
+    e.preventDefault();
+    playerName = inputPlayerName.value;
+    console.log(playerName);
+    startGame();
+});
+
+const fruits = ['fig', 'mad'];
+
+function startGame() {
+    startTime = Date.now();
+    showPage('gamePage');
+    const randomIndex = Math.floor(Math.random() * fruits.length);
+    randomFruit = fruits[randomIndex];
+    for (var i = 1; i <= randomFruit.length; i++) {
+        textUnderlines += '_';
+    }
+    const divUnderlines = document.getElementById('underline');
+    divUnderlines.textContent = textUnderlines;
+}
+
+function selectChar(chr) {
+    const divUnderlines = document.getElementById('underline');
+    let textUnderlines = divUnderlines.textContent;
+    let foundChar = false;
+    for (var i = 0; i < randomFruit.length; i++) {
+        if (randomFruit.charAt(i) === chr) {
+            textUnderlines = replaceAt(textUnderlines, i, chr);
+            foundChar = true;
+            if (!textUnderlines.includes('_')) {
+                endTime = Date.now();
+                showPage('wonPage');
+                break;
+            }
+        }
+    }
+
+    const bodyPieces = ['head', 'body', 'armL', 'armR', 'legL', 'legR'];
+    if (!foundChar) {
+        document
+            .getElementById(bodyPieces[countErrors])
+            .classList.remove('figure-part');
+
+        if (countErrors === 5) {
+            // function gameover() ...
+            endTime = Date.now();
+            getPoints();
+            setTimeout(function () {
+                showPage('lostPage');
+            }, 1000);
+        }
+        countErrors++;
+    }
+    divUnderlines.textContent = textUnderlines;
+}
+
+function replaceAt(str, i, chr) {
+    if (index > str.length - 1) return str; 
+    return str.substring(0, i) + chr + str.substring(i + 1);
+}
+
+function showPage(pageClass) {
+    document.getElementById('firstPage').style.display = 'none';
+    document.getElementById('gamePage').style.display = 'block';
+    document.getElementById('wonPage').style.display = 'none';
+    document.getElementById('lostPage').style.display = 'none';
+    document.getElementById(pageClass).style.display = 'block';
+}
+
+function getPoints() {
+    scoreTime = endTime - startTime / 100;
+    switch (true) {
+        case scoreTime <= 10:
+            points = 100;
+            break;
+
+        case scoreTime > 10 <= 20:
+            points = 80;
+            break;
+
+        case scoreTime > 20 <= 30:
+            points = 60;
+            break;
+
+        case scoreTime > 30 <= 40:
+            points = 40;
+            break;
+
+        case scoreTime > 40 < 50:
+            points = 20;
+            break;
+
+        case scoreTime > 50 <= 60:
+            points = 10;
+            break;
+
+        case scoreTime > 60 <= 70:
+            points = 10;
+            break;
+
+        default:
+            points = 0;
+            break;
+    }
+    return;
+}

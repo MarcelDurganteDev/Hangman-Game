@@ -18,8 +18,17 @@ section {
 .won-page,
 .lost-page {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
+}
+
+.scores-board {
+  display:flex;
+  flex: column;
+  justify-content: center;
+  align-items: flex-start;
+
 }
 
 /* USER CONTAINER */
@@ -30,8 +39,8 @@ section {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
-  height: 60rem;
-  width: 90rem;
+  height: 40rem;
+  width: 40rem;
   margin: 10rem;
 }
 
@@ -145,8 +154,14 @@ line {
 .underline {
   text-align: center;
   margin-top: 45%;
+  color: blue;
+  letter-spacing: 10px;
 }
 
+.underline-span {
+  padding: 10px;
+  /* color: blue; */
+}
 /* CLICKED LETTERS CONTAINER */
 
 .clicked-letters {
@@ -169,4 +184,4 @@ line {
   color: black;
   height: 5rem;
   width: 5rem;
-}
+} 
