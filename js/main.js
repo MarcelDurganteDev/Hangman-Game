@@ -1,6 +1,3 @@
-// Pegar instância do input de nome do usuário
-var inputUserName = document.getElementById('userName'); // if were to .value as it is called in the beg of the code would return an empty string
-var usersRanking = [];
 var randomFruit = '';
 showPage('firstPage');
 var countErrors = 0;
@@ -8,6 +5,17 @@ let startTime;
 let endTime;
 let scoreTime;
 let points;
+const startGameBtn = document.getElementById('startGame');
+var userName;
+var localStorageRanking = localStorage.getItem('playerData');
+if (localStorageRanking) {
+    var usersRanking = JSON.parse(localStorageRanking);
+    usersRanking.forEach(element => {
+        const firstTable = document.getElementById('Users');
+        firstTable.innerHTML += `<span class="bold" >${element.userName}</span>
+                    <div id="scores"><span>${element.ranking}</span><span>seconds</span></div>`;
+    });
+}
 
 const fruits = [
     'fig',
@@ -17,22 +25,45 @@ const fruits = [
     // 'strawberry',
     // 'pomegranate'
 ];
+var inputUserName = document.getElementById('userNameInput'); // if were to .value as it is called in the beg of the code would return an empty string
+
+startGameBtn.addEventListener('click', e => {
+    e.preventDefault();
+    startGame();
+});
 
 function startGame() {
-    var userName = inputUserName.value;
     startTime = Date.now();
+    userName = inputUserName.value;
     // instancio variavel aqui pois para confirmar que existe no localStorage tenho que ter ela criada para confirmar, entao por enquanto retorna null
-    var localStorageRanking = localStorage.getItem('ranking');
-    if (localStorageRanking) {
-        usersRanking = JSON.parse(localStorageRanking);
+    var localStorageRanking = localStorage.getItem('playerData');
+
+    const data = document.getElementById('currUserPage1');
+    data.innerText = userName;
+    if ( localStorageRanking ) {
+        
+        usersRanking = JSON.parse( localStorageRanking );
+        const verified = usersRanking.find( element => element.userName == userName )
+        if ( !verified ) {
+            usersRanking.push({
+                userName: userName,
+                ranking: 0
+            });
+            localStorage.setItem('playerData', JSON.stringify(usersRanking));
+        }       
+    } else {
+        usersRanking = [
+            {
+                userName: userName,
+                ranking: 0
+            }
+        ];
+
+        localStorage.setItem('playerData', JSON.stringify(usersRanking));
     }
-    // Guardar o username no localStorage
-    // Deixar para o final, depois que termina de jogar
-    // usersRanking.push({
-    //     userName: userName,
-    //     ranking: 0
-    // })
+
     showPage('gamePage');
+
     const randomIndex = Math.floor(Math.random() * fruits.length);
     randomFruit = fruits[randomIndex];
     var textUnderlines = '';
@@ -49,13 +80,43 @@ function selectChar(chr) {
     let foundChar = false;
     for (var i = 0; i < randomFruit.length; i++) {
         if (randomFruit.charAt(i) === chr) {
-            textUnderlines = replaceAt(textUnderlines, i, chr)
+            textUnderlines = replaceAt(textUnderlines, i, chr);
             console.log(textUnderlines);
             foundChar = true;
             if (!textUnderlines.includes('_')) {
                 endTime = Date.now();
+                const points = getPoints(startTime, endTime);
+
+                var localStorageRanking = localStorage.getItem('playerData');
+                if (localStorageRanking) {
+                    usersRanking = JSON.parse(localStorageRanking);
+                    console.log(usersRanking);
+                    console.log(userName);
+
+                    usersRanking.forEach(element => {
+                        if (element.userName == userName) {
+                            element.ranking = points;
+                        }
+                    });
+
+                    localStorage.setItem(
+                        'playerData',
+                        JSON.stringify(usersRanking)
+                    );
+                }
+
+                console.log(points);
+
+                const scoreBoardWon = document.getElementById('currUserPage3');
+                scoreBoardWon.textContent = userName;
+
+                usersRanking.forEach(element => {
+                    const firstTable = document.getElementById('Users1');
+                    firstTable.innerHTML += `<span class="bold" >${element.userName}</span>
+                    <div id="scores"><span>${element.ranking}</span><span>seconds</span></div>`;
+                });
+
                 showPage('wonPage');
-                break;
             }
         }
     }
@@ -69,7 +130,14 @@ function selectChar(chr) {
         if (countErrors === 5) {
             // function gameover() ...
             endTime = Date.now();
-            setTimeout(function () {
+            setTimeout( function () {
+                
+                usersRanking.forEach(element => {
+                    const firstTable = document.getElementById('UsersLost');
+                    firstTable.innerHTML += `<span class="bold" >${element.userName}</span>
+                    <div id="scores"><span>${element.ranking}</span></div>`;
+                });
+
                 showPage('lostPage');
             }, 1000);
         }
@@ -90,34 +158,38 @@ function showPage(pageClass) {
     document.getElementById(pageClass).style.display = 'block';
 }
 
-function getPoints() {
-    scoreTime = endTime - startTime / 100;
+function getPoints(startTime, endTime) {
+    const start = startTime / 1000;
+    const end = endTime / 1000;
+    scoreTime = end - start;
+    console.log(start, end, scoreTime);
+    const newscore = Math.floor(scoreTime);
     switch (true) {
-        case scoreTime <= 10:
+        case newscore <= 10:
             points = 100;
             break;
 
-        case scoreTime > 10 <= 20:
+        case newscore > 10 && newscore <= 20:
             points = 80;
             break;
 
-        case scoreTime > 20 <= 30:
+        case newscore > 20 && newscore <= 30:
             points = 60;
             break;
 
-        case scoreTime > 30 <= 40:
+        case newscore > 30 && newscore <= 40:
             points = 40;
             break;
 
-        case scoreTime > 40 < 50:
+        case newscore > 40 && newscore < 50:
             points = 20;
             break;
 
-        case scoreTime > 50 <= 60:
+        case newscore > 50 && newscore <= 60:
             points = 10;
             break;
 
-        case scoreTime > 60 <= 70:
+        case scoreTime > 60 :
             points = 10;
             break;
 
@@ -125,22 +197,26 @@ function getPoints() {
             points = 0;
             break;
     }
-    return;
+    return points;
+
 }
 
+
+const playAgain = document.querySelectorAll( '.playAgain' ); 
+playAgain.forEach( element => {
+    element.addEventListener( 'click', () => window.location.reload() )
+    
+    
+});`    `
 // var userName = getUserName()
 // function getUserName() {
 //     return document.getElementById('userName').value
 // }
 
-// Mostrar pontuaçao do jogador tempo de jogo + numero de letras
-    // letra vale 1
-    // contador de tempo
-    // tempo final menos inical 
-    // cada 10s -1 ponto
-
+// Mostrar pontuaçao do jogador tempo de jogo
+//
+//
 
 // Nas pags lost e won ter o btn jogar novamente
-
 
 // Aumentar o nivel de dificuldade do jogo a cada rodada

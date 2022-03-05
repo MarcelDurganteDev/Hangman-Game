@@ -18,12 +18,12 @@
         <div class="user-container">
             <p>Choose your name</p>
             <span id="userName">Player tag</span>
-            <input type="text" id="userName" class="userName">
+            <input type="text" id="userNameInput" class="userName">
             <!-- Corrigir indentação -->
             <div>
                 <a href="#game-page">
             </div>
-            <button id="startGame" class="start" onclick="startGame();">Start Game</button>
+            <button id="startGame" class="start">Start Game</button>
             </a>
         </div>
         <!-- USER SCORES CONTAINER -->
@@ -31,29 +31,16 @@
             <p>User Scores</p>
             <!-- current user -->
             <div class="current-user margin-3">
-                <span div="currUsername" class="bold">Marcel</span>
+                <span div="currUsername" class="bold">
+                    <p id="currUserPage1"></p>
+                </span>
                 <div class="currUser ">
                     <span id="currStatus">current playing</span>
                 </div>
             </div>
             <!-- first user -->
-            <div id="firstUser" class="margin-3">
-                <span class="bold">Danijel</span>
-                <div id="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- second user -->
-            <div id="secondUser" class="margin-3">
-                <span class="bold">Caroline</span>
-                <div id="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- third user" class="-->
-            <div id="thirdUser" class="margin-3">
-                <span id="thirdUser" class="bold">Marcel</span>
-                <div id="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- forth user" class="-->
-            <div id="forthUser" class="margin-3">
-                <span class="bold">Mikaela</span>
+            <div id="Users" class="margin-3">
+                <span class="bold" id="user1">Danijel</span>
                 <div id="scores"><span>100</span><span>seconds</span></div>
             </div>
         </div>
@@ -139,34 +126,15 @@
         <!-- USER SCORE CONTAINER -->
         <div class="user-scores">
             <p>User Scores</p>
-            <!-- current user -->
             <div class="current-user margin-3">
-                <span id="currUsername" class="bold">Marcel</span>
-                <div class="curr-user ">
-                    <span id="currStatus">current playing</span>
-                </div>
+                <span div="currUsername" class="bold">
+                    <p id="currUserPage2"></p>
+                </span>
             </div>
-            <!-- first user -->
-            <div id="firstUser" class="margin-3">
-                <span class="bold">Danijel</span>
-                <div id="score1"><span>100</span><span>seconds</span></div>
+            <div id="Users" class="margin-3">
+                <span class="bold" id="user2">Danijel</span>
+                <div id="scores"><span>100</span><span>seconds</span></div>
             </div>
-            <!-- second user -->
-            <div id="secondUser" class="margin-3">
-                <span class="bold">Caroline</span>
-                <div id="score2"><span>100</span><span>seconds</span></div>
-            </div>
-            <!--third user" class="-->
-            <div id="third-user" class="margin-3">
-                <span class="thirdUser bold">Marcel</span>
-                <div id="score3"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- forth user" class="-->
-            <div id="forth-user" class="margin-3">
-                <span class="bold">Mikaela</span>
-                <div id="score4"><span>100</span><span>seconds</span></div>
-            </div>
-        </div>
         </div>
     </section>
 
@@ -182,30 +150,16 @@
             <p>User Scores</p>
             <!-- current user -->
             <div class="current-user margin-3">
-                <span class="currUsername bold">Marcel</span>
+                <span div="currUsername" class="bold">
+                    <p id="currUserPage3"></p>
+                </span>
                 <div class="currUser ">
-                    <span id="currStatus">current playing</span>
+                    <span id="currStatus">WINNER!</span>
                 </div>
             </div>
             <!-- first user -->
-            <div id="firstUser" class="margin-3">
-                <span class="bold">Danijel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- second user -->
-            <div id="secondUser" class="margin-3">
-                <span class="bold">Caroline</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- third user" class="-->
-            <div id="third-user" class="margin-3">
-                <span class="thirdUser bold">Marcel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- forth user" class="-->
-            <div id="forth-user" class="margin-3">
-                <span class="bold">Mikaela</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+            <div id="Users1" class="margin-3">
+               
             </div>
         </div>
     </section>
@@ -213,42 +167,22 @@
     <!-- LOST PAGE -->
     <section id="lostPage">
         <div>
-            <a href="#lost-page">
+            <a href="#lost-page"></a>
         </div>
         <div class="lost-container">
             <p>You Lost!</p>
-            <p>You lost in <span>50</span><span>seconds</span>.</p>
             <button class="playAgain">Play Again</button>
         </div>
-        <!-- USER SCORE CONTAINER -->
         <div class="user-scores">
             <p>User Scores</p>
             <!-- current user -->
             <div class="current-user margin-3">
-                <span class="currUsername bold">Marcel</span>
-                <div class="currUser ">
-                    <span id="currStatus">current playing</span>
-                </div>
+                <span div="currUsername" class="bold">
+                    <p id="currUserPage4"></p>
+                </span>
             </div>
             <!-- first user -->
-            <div id="firstUser" class="margin-3">
-                <span class="bold">Danijel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- second user -->
-            <div id="secondUser" class="margin-3">
-                <span class="bold">Caroline</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- third user" class="-->
-            <div id="third-user" class="margin-3">
-                <span class="thirdUser bold">Marcel</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
-            </div>
-            <!-- forth user" class="-->
-            <div id="forth-user" class="margin-3">
-                <span class="bold">Mikaela</span>
-                <div class="scores"><span>100</span><span>seconds</span></div>
+            <div id="UsersLost" class="margin-3">
             </div>
         </div>
 
