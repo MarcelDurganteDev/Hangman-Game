@@ -6,134 +6,113 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="/Hangman_Game/javascript/data.js" defer></script> -->
-    <title>HangMan Game</title>
+    <title>Hangman Game</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/generalization.css">
 </head>
 
 <body>
     <!-- FIRST PAGE-->
     <section id="firstPage">
-        <!-- USER CONTAINER -->
-        <div class="user-container">
-            <p>Choose your name</p>
-            <span id="userName">Player tag</span>
-            <input type="text" id="userNameInput" class="userName">
-            <!-- Corrigir indentação -->
-            <div>
-                <a href="#game-page">
+        <div class="wrap">
+            <div class="avatar">
+                <img src="https://i.ibb.co/0mHymYT/hangman-avatar-rope.png">
             </div>
-            <button id="startGame" class="start">Start Game</button>
-            </a>
-        </div>
-        <!-- USER SCORES CONTAINER -->
-        <div class="user-scores">
-            <p>User Scores</p>
-            <!-- current user -->
-            <div class="current-user margin-3">
-                <span div="currUsername" class="bold">
-                    <p id="currUserPage1"></p>
-                </span>
-                <div class="currUser ">
-                    <span id="currStatus">current playing</span>
-                </div>
+            <input type="text" id="userNameInput" placeholder="username" required>
+            <div class="bar">
+                <i></i>
             </div>
-            <!-- first user -->
-            <div id="Users" class="margin-3">
-                <span class="bold" id="user1">Danijel</span>
-                <div id="scores"><span>100</span><span>seconds</span></div>
-            </div>
+            <button class='play-btn' id="startGame">Play</button>
         </div>
     </section>
 
     <!-- GAME PAGE -->
-    <a name="game_page"></a>
     <section id="gamePage">
-        <!-- MAIN CONTAINER -->
-        <div class="main-container">
-            <!-- SVG IMAGE -->
-            <div class="image-container">
-                <svg height="300" width="300" id="hangman" class="">
-                    <line x1="10" y1="250" x2="200" y2="250" />
-                    <line x1="105" y1="250" x2="105" y2="20" />
-                    <line x1="103" y1="20" x2="202" y2="20" />
-                    <line x1="200" y1="20" x2="200" y2="60" />
-                    <!-- head-->
-                    <g id="head" class="figure-part ">
-                        <circle cx="200" cy="80" r="20" stroke="black" stroke-width="4" fill="white" />
-                        <circle cx="193" cy="80" r="4" />
-                        <circle cx="207" cy="80" r="4" />
-                        <line x1="190" y1="78" x2="196" y2="84" />
-                        <line x1="204" y1="78" x2="210" y2="84" />
-                        <line x1="190" y1="84" x2="196" y2="78" />
-                        <line x1="204" y1="84" x2="210" y2="78" />
-                    </g>
-                    <!-- body parts -->
-                    <g id="fullBody">
-                        <line id="body" class="figure-part" x1="200" y1="100" x2="200" y2="150" />
-                        <line id="armL" class="figure-part" x1="200" y1="120" x2="170" y2="140" />
-                        <line id="armR" class="figure-part" x1="200" y1="120" x2="230" y2="140" />
-                        <line id="legL" class="figure-part" x1="200" y1="150" x2="180" y2="190" />
-                        <line id="legR" class="figure-part" x1="200" y1="150" x2="220" y2="190" />
-                    </g>
-                </svg>
-            </div>
-            <!-- GUESS CONTAINER-->
-            <div class="guess-container">
-                <div>
-                    <p>Guess the fruit</p>
+        <div class="body-container">
+            <div class="main-container">
+                <!-- SVG IMAGE -->
+                <div class="image-container">
+                    <svg height="300" width="300" id="hangman" class="">
+                        <line x1="10" y1="250" x2="200" y2="250" />
+                        <line x1="105" y1="250" x2="105" y2="20" />
+                        <line x1="103" y1="20" x2="202" y2="20" />
+                        <line x1="200" y1="20" x2="200" y2="60" />
+                        <!-- head-->
+                        <g id="head" class="figure-part ">
+                            <circle cx="200" cy="80" r="20" stroke="black" stroke-width="4" fill="white" />
+                            <circle cx="193" cy="80" r="4" />
+                            <circle cx="207" cy="80" r="4" />
+                            <line x1="190" y1="78" x2="196" y2="84" />
+                            <line x1="204" y1="78" x2="210" y2="84" />
+                            <line x1="190" y1="84" x2="196" y2="78" />
+                            <line x1="204" y1="84" x2="210" y2="78" />
+                        </g>
+                        <!-- body parts -->
+                        <g id="fullBody">
+                            <line id="body" class="figure-part" x1="200" y1="100" x2="200" y2="150" />
+                            <line id="armL" class="figure-part" x1="200" y1="120" x2="170" y2="140" />
+                            <line id="armR" class="figure-part" x1="200" y1="120" x2="230" y2="140" />
+                            <line id="legL" class="figure-part" x1="200" y1="150" x2="180" y2="190" />
+                            <line id="legR" class="figure-part" x1="200" y1="150" x2="220" y2="190" />
+                        </g>
+                    </svg>
                 </div>
-                <!-- UNDERLINED LETTERS CONTAINER-->
-                <div id="underline" class="underline">
-                    <span></span>
+                <!-- GUESS CONTAINER-->
+                <div class="guess-container">
+                    <div>
+                        <p>Guess the Fruit</p>
+                    </div>
+                    <!-- UNDERLINED LETTERS CONTAINER-->
+                    <div id="underline" class="underline">
+                        <span></span>
+                    </div>
                 </div>
-            </div>
-            <!-- CLICKED LETTERS CONTAINER-->
-            <div class="clicked-letters">
-                <span class="used-letters" id="usedLetters"></span>
-            </div>
-            <!-- KEYBOARD LETTERS CONTAINER-->
-            <div class="letters-container">
-                <div class="keyboard">
-                    <button onclick="selectChar('a'); this.disabled=true;">a</button>
-                    <button onclick="selectChar('b'); this.disabled=true;">b</button>
-                    <button onclick="selectChar('c'); this.disabled=true;">c</button>
-                    <button onclick="selectChar('d'); this.disabled=true;">d</button>
-                    <button onclick="selectChar('e'); this.disabled=true;">e</button>
-                    <button onclick="selectChar('f'); this.disabled=true;">f</button>
-                    <button onclick="selectChar('g'); this.disabled=true;">g</button>
-                    <button onclick="selectChar('h'); this.disabled=true;">h</button>
-                    <button onclick="selectChar('i'); this.disabled=true;">i</button>
-                    <button onclick="selectChar('j'); this.disabled=true;">j</button>
-                    <button onclick="selectChar('k'); this.disabled=true;">k</button>
-                    <button onclick="selectChar('l'); this.disabled=true;">l</button>
-                    <button onclick="selectChar('m'); this.disabled=true;">m</button>
-                    <button onclick="selectChar('n'); this.disabled=true;">n</button>
-                    <button onclick="selectChar('o'); this.disabled=true;">o</button>
-                    <button onclick="selectChar('p'); this.disabled=true;">p</button>
-                    <button onclick="selectChar('q'); this.disabled=true;">q</button>
-                    <button onclick="selectChar('r'); this.disabled=true;">r</button>
-                    <button onclick="selectChar('s'); this.disabled=true;">s</button>
-                    <button onclick="selectChar('t'); this.disabled=true;">t</button>
-                    <button onclick="selectChar('u'); this.disabled=true;">u</button>
-                    <button onclick="selectChar('v'); this.disabled=true;">v</button>
-                    <button onclick="selectChar('x'); this.disabled=true;">x</button>
-                    <button onclick="selectChar('z'); this.disabled=true;">z</button>
+                <!-- KEYBOARD LETTERS CONTAINER-->
+                <div class="letters-container">
+                    <div class="keyboard">
+                        <button onclick="selectChar('a'); this.disabled=true;">a</button>
+                        <button onclick="selectChar('b'); this.disabled=true;">b</button>
+                        <button onclick="selectChar('c'); this.disabled=true;">c</button>
+                        <button onclick="selectChar('d'); this.disabled=true;">d</button>
+                        <button onclick="selectChar('e'); this.disabled=true;">e</button>
+                        <button onclick="selectChar('f'); this.disabled=true;">f</button>
+                        <button onclick="selectChar('g'); this.disabled=true;">g</button>
+                        <button onclick="selectChar('h'); this.disabled=true;">h</button>
+                        <button onclick="selectChar('i'); this.disabled=true;">i</button>
+                        <button onclick="selectChar('j'); this.disabled=true;">j</button>
+                        <button onclick="selectChar('k'); this.disabled=true;">k</button>
+                        <button onclick="selectChar('l'); this.disabled=true;">l</button>
+                        <button onclick="selectChar('m'); this.disabled=true;">m</button>
+                        <button onclick="selectChar('n'); this.disabled=true;">n</button>
+                        <button onclick="selectChar('o'); this.disabled=true;">o</button>
+                        <button onclick="selectChar('p'); this.disabled=true;">p</button>
+                        <button onclick="selectChar('q'); this.disabled=true;">q</button>
+                        <button onclick="selectChar('r'); this.disabled=true;">r</button>
+                        <button onclick="selectChar('s'); this.disabled=true;">s</button>
+                        <button onclick="selectChar('t'); this.disabled=true;">t</button>
+                        <button onclick="selectChar('u'); this.disabled=true;">u</button>
+                        <button onclick="selectChar('v'); this.disabled=true;">v</button>
+                        <button onclick="selectChar('x'); this.disabled=true;">x</button>
+                        <button onclick="selectChar('z'); this.disabled=true;">z</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- USER SCORE CONTAINER -->
-        <div class="user-scores">
-            <p>User Scores</p>
-            <div class="current-user margin-3">
-                <span div="currUsername" class="bold">
-                    <p id="currUserPage2"></p>
-                </span>
-            </div>
-            <div id="Users" class="margin-3">
-                <span class="bold" id="user2">Danijel</span>
-                <div id="scores"><span>100</span><span>seconds</span></div>
+            <!-- USER SCORE CONTAINER -->
+
+
+            <div class="user-scores">
+                <p>User Scores</p>
+                <div class="current-user margin-3">
+                    <span div="currUsername" class="bold">
+                        <p id="currentPlayer"></p>
+                    </span>
+                    <div class="currUser ">
+                        <span id="currStatus">Current player...</span>
+                    </div>
+                </div>
+                <div id="Users" class="margin-3"></div>
             </div>
         </div>
     </section>
@@ -142,49 +121,44 @@
     <section id="wonPage">
         <div class="won-container">
             <p>You Won!</p>
-            <p>You won in <span>50</span><span>seconds</span>.</p>
-            <button class="playAgain">Play Again</button>
+            <button class="play-again">Play Again</button>
         </div>
-        <!-- USER SCORE CONTAINER -->
+
+
+
         <div class="user-scores">
             <p>User Scores</p>
-            <!-- current user -->
             <div class="current-user margin-3">
                 <span div="currUsername" class="bold">
-                    <p id="currUserPage3"></p>
+                    <p id="winner"></p>
                 </span>
                 <div class="currUser ">
-                    <span id="currStatus">WINNER!</span>
+                    <span id="currStatus">You Won!</span>
                 </div>
             </div>
-            <!-- first user -->
-            <div id="Users1" class="margin-3">
-               
+            <div id="playersRanking" class="margin-3">
             </div>
         </div>
     </section>
 
     <!-- LOST PAGE -->
     <section id="lostPage">
-        <div>
-            <a href="#lost-page"></a>
-        </div>
-        <div class="lost-container">
-            <p>You Lost!</p>
-            <button class="playAgain">Play Again</button>
-        </div>
+
         <div class="user-scores">
             <p>User Scores</p>
-            <!-- current user -->
             <div class="current-user margin-3">
                 <span div="currUsername" class="bold">
-                    <p id="currUserPage4"></p>
+                    <p id="loserPlayerName"></p>
                 </span>
+                <div class="currUser ">
+                    <span id="currStatus">You Lost!</span>
+                </div>
             </div>
-            <!-- first user -->
-            <div id="UsersLost" class="margin-3">
+            <hr>
+            <div id="playersRankingLostPage" class="margin-3">
             </div>
         </div>
+        <button class='play-again'>Play Again</button>
 
     </section>
     <script src="./js/main.js"></script>

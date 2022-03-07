@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+
+body {
+    background: #448ed3;
+    font-family: 'Patrick Hand SC', cursive;
+}
+.wrap {
+    width: 250px;
+    height: auto;
+    margin: auto;
+    margin-top: 10%;
+}
+.avatar {
+    width: 100%;
+    margin: auto;
+    width: 200px;
+    border-radius: 100px;
+    height: 200px;
+    background: #448ed3;
+    position: relative;
+    bottom: -15px;
+}
+.avatar img {
+    width: 180px;
+    height: 180px;
+    margin: auto;
+    display: block;
+}
+.wrap input {
+    border: none;
+    background: #fff;
+    font-size: 36px;
+    font-family: 'Patrick Hand SC', cursive;
+    font-weight: 400;
+    display: block;
+    height: 160px;
+    outline: none;
+    width: calc(100% - 24px);
+    margin: auto;
+    padding: 6px 12px 6px 12px;
+}
+.bar {
+    width: 100%;
+    height: 1px;
+    background: #fff;
+}
+.bar i {
+    width: 95%;
+    margin: auto;
+    height: 1px;
+    display: block;
+    background: #d1d1d1;
+}
+.wrap input[type='text'] {
+    border-radius: 7px 7px 0px 0px;
+}
+.wrap input[type='password'] {
+    border-radius: 0px 0px 7px 7px;
+}
+.wrap button {
+    width: 100%;
+    border-radius: 7px;
+    background: #faf613;
+    font-family: 'Patrick Hand SC', cursive;
+    text-decoration: center;
+    border: none;
+    color: #0c6cda;
+    margin-top: -5px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    outline: none;
+    font-size: 30px;
+    border-bottom: 3px solid #307d63;
+    cursor: pointer;
+}
+
+.body-container {
+    display: flex;
+}
+
+.figure-part {
+    display: none;
+}
+
+/* USER PAGE (first page) */
+
+section {
+    height: 100vh;
+    width: 100%;
+    place-items: center;
+}
+
+.first-page,
+.game-page,
+.won-page,
+.lost-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.scores-board {
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.user-scores {
+    display: flex;
+    flex-direction: column;
+    height: 60rem;
+    width: 30rem;
+    border: 1px solid black;
+    font-size: 2.5rem;
+    margin-top: 100px;
+}
+
+.user-scores p {
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.user-scores span {
+    display: flex;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.scores {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 13rem;
+}
+
+.margin-3 {
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+/* MAIN CONTAINER */
+
+.main-container {
+    display: grid;
+    grid-template-areas:
+        'img guess guess guess'
+        'letters letters letters letters';
+    border: 1px solid black;
+    height: 60rem;
+    width: 90rem;
+    margin: 10rem;
+}
+
+/* IMAGE CONTAINER */
+
+.image-container {
+    grid-area: img;
+}
+
+/* HANGMAN SVG IMAGE */
+
+svg {
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+line {
+    stroke: black;
+    stroke-width: 4;
+}
+
+/* GUESS CONTAINER */
+
+.guess-container {
+    grid-area: guess;
+    display: flex;
+    flex-direction: column;
+}
+
+.guess-container p {
+    font-weight: bold;
+    font-size: 5rem;
+    text-align: center;
+    color: yellow;
+}
+
+/* UNDERLINED LETTERS CONTAINER */
+
+.underline {
+    text-align: center;
+    margin-top: 20%;
+    color: rgb(230, 230, 49);
+    letter-spacing: 10px;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.underline-span {
+    padding: 10px;
+    
+}
+
+  /* LETTERS CONTAINER & KEYBOARD  */
+
+.letters-container {
+    grid-area: letters;
+    width: 900px;
+    margin-left: 25px;
+   
+}
+
+.lettersBtn {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.keyboard {
+    
+    justify-content: center;
+    align-items: center;
+
+}
+
+.keyboard button {
+    
+    color: black;
+    height: 50px;
+    width: 50px;
+   
+} 

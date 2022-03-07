@@ -19,17 +19,17 @@ if (localStorageRanking) {
 
 const fruits = [
     'fig',
-    'mad'
-    // 'coconut',
-    // 'pineapple',
-    // 'strawberry',
-    // 'pomegranate'
+    'mad',
+    'coconut',
+    'pineapple',
+    'strawberry',
+    'pomegranate'
 ];
-var inputUserName = document.getElementById('userNameInput'); // if were to .value as it is called in the beg of the code would return an empty string
-
+var inputUserName = document.getElementById('userNameInput'); 
 startGameBtn.addEventListener('click', e => {
     e.preventDefault();
     startGame();
+    inputUserName.value = "";
 });
 
 function startGame() {
@@ -38,19 +38,20 @@ function startGame() {
     // instancio variavel aqui pois para confirmar que existe no localStorage tenho que ter ela criada para confirmar, entao por enquanto retorna null
     var localStorageRanking = localStorage.getItem('playerData');
 
-    const data = document.getElementById('currUserPage1');
+    const data = document.getElementById('currentPlayer');
     data.innerText = userName;
-    if ( localStorageRanking ) {
-        
-        usersRanking = JSON.parse( localStorageRanking );
-        const verified = usersRanking.find( element => element.userName == userName )
-        if ( !verified ) {
+    if (localStorageRanking) {
+        usersRanking = JSON.parse(localStorageRanking);
+        const verified = usersRanking.find(
+            element => element.userName == userName
+        );
+        if (!verified) {
             usersRanking.push({
                 userName: userName,
                 ranking: 0
             });
             localStorage.setItem('playerData', JSON.stringify(usersRanking));
-        }       
+        }
     } else {
         usersRanking = [
             {
@@ -83,7 +84,7 @@ function selectChar(chr) {
             textUnderlines = replaceAt(textUnderlines, i, chr);
             console.log(textUnderlines);
             foundChar = true;
-            if (!textUnderlines.includes('_')) {
+            if (!textUnderlines.includes('_')) {   //  WON BREAKPOINT
                 endTime = Date.now();
                 const points = getPoints(startTime, endTime);
 
@@ -107,11 +108,11 @@ function selectChar(chr) {
 
                 console.log(points);
 
-                const scoreBoardWon = document.getElementById('currUserPage3');
-                scoreBoardWon.textContent = userName;
+                const winner = document.getElementById('winner');
+                winner.textContent = userName;
 
                 usersRanking.forEach(element => {
-                    const firstTable = document.getElementById('Users1');
+                    const firstTable = document.getElementById('playersRanking');
                     firstTable.innerHTML += `<span class="bold" >${element.userName}</span>
                     <div id="scores"><span>${element.ranking}</span><span>seconds</span></div>`;
                 });
@@ -127,13 +128,14 @@ function selectChar(chr) {
             .getElementById(bodyPieces[countErrors])
             .classList.remove('figure-part');
 
-        if (countErrors === 5) {
-            // function gameover() ...
+        if (countErrors === 5) {      //  LOST BREAKPOINT
             endTime = Date.now();
-            setTimeout( function () {
-                
+            const loserPlayerName = document.getElementById('loserPlayerName');
+            loserPlayerName.textContent = userName;
+            setTimeout(function () {
                 usersRanking.forEach(element => {
-                    const firstTable = document.getElementById('UsersLost');
+                    const firstTable =
+                        document.getElementById('playersRankingLostPage');
                     firstTable.innerHTML += `<span class="bold" >${element.userName}</span>
                     <div id="scores"><span>${element.ranking}</span></div>`;
                 });
@@ -189,7 +191,7 @@ function getPoints(startTime, endTime) {
             points = 10;
             break;
 
-        case scoreTime > 60 :
+        case scoreTime > 60:
             points = 10;
             break;
 
@@ -198,25 +200,10 @@ function getPoints(startTime, endTime) {
             break;
     }
     return points;
-
 }
 
+const playAgain = document.querySelectorAll('.play-again');
+playAgain.forEach(element => {
+    element.addEventListener('click', () => window.location.reload());
+});
 
-const playAgain = document.querySelectorAll( '.playAgain' ); 
-playAgain.forEach( element => {
-    element.addEventListener( 'click', () => window.location.reload() )
-    
-    
-});`    `
-// var userName = getUserName()
-// function getUserName() {
-//     return document.getElementById('userName').value
-// }
-
-// Mostrar pontuaçao do jogador tempo de jogo
-//
-//
-
-// Nas pags lost e won ter o btn jogar novamente
-
-// Aumentar o nivel de dificuldade do jogo a cada rodada
